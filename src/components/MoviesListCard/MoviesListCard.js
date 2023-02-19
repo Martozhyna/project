@@ -1,8 +1,9 @@
-const MoviesListCard = () => {
+const MoviesListCard = ({movie}) => {
     //наступна сторінка, де відображається вся інформація про фільм
+    const {original_title} = movie
     return (
         <div>
-            MoviesListCard
+            <h2>{original_title}</h2>
         </div>
     )
 }
