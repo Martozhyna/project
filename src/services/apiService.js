@@ -1,7 +1,9 @@
 //це наш аксіос сервіс
 import axios from "axios";
 
+
 import {baseURL} from "../configs";
+
 
 const apiService = axios.create({baseURL});
 
@@ -12,7 +14,10 @@ apiService.interceptors.request.use((config) => {
     return config;
 });
 
+
+
 export {
-    apiService
+    apiService,
+
 };
 

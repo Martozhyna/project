@@ -3,7 +3,7 @@ import {apiService} from "./apiService";
 import {urls} from "../configs";
 
 const movieService = {
-    getMovie: () => apiService.get(urls.movie)
+    getMovie: (page=1) => apiService.get(urls.movie,{params: {page}})
 };
 
 export {

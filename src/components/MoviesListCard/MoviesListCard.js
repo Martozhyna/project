@@ -1,9 +1,10 @@
 const MoviesListCard = ({movie}) => {
     //наступна сторінка, де відображається вся інформація про фільм
-    const {original_title} = movie
+    const {title,poster_path} = movie
     return (
         <div>
-            <h2>{original_title}</h2>
+            <h2>{title}</h2>
+            <img src={'https://image.tmdb.org/t/p/w500/' + poster_path} alt={title}/>
         </div>
     )
 }
