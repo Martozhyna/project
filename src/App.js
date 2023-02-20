@@ -2,13 +2,19 @@ import {Route, Routes} from "react-router-dom";
 
 import './App.css';
 import {MoviesPage} from "./containers";
+import {Header, MovieInfo} from "./components";
 
 
 function App() {
     return (
-        <Routes>
-            <Route path={'/'} element={<MoviesPage/>}/>
-        </Routes>
+        <div>
+            <Header/>
+            <Routes>
+                <Route path={'/'} element={<MoviesPage/>}/>
+                <Route path={'/movie/:id'} element={<MovieInfo/>}/>
+            </Routes>
+        </div>
+
     );
 }
 

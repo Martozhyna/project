@@ -1,0 +1,41 @@
+.movieBg{
+    width: 20%;
+    margin: 10px;
+    background-image: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    border-radius: 20px;
+    transition: all .3s;
+}
+
+.movie {
+    width: 100%;
+    border-radius:20px;
+    transition: all .2s;
+    background: snow;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movieBg:hover{
+    box-shadow: rgb(236, 189, 164) 0 15px 30px -5px;
+    transform: translateY(-10px);
+}
+
+.movie:hover{
+    transform: scale(0.98);
+    border-radius: 20px;
+}
+
+.linkDiv{
+margin: 10px;
+}
+
+.link{
+    color: black;
+    font-size: 20px;
+}
