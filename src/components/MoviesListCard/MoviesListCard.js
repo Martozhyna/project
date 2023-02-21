@@ -13,6 +13,9 @@ const MoviesListCard = ({movie}) => {
                     <h2>{title}</h2>
                     <h3>{release_date.slice(0,4)}</h3>
                     <img src={'https://image.tmdb.org/t/p/w300/' + poster_path} alt={title}/>
+                    <div>
+
+                    </div>
                     <div className={css.linkDiv}>
                         <Link to={`/movie/${id}`} className={css.link}>Learn more</Link>
                     </div>
