@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 
 import {movieAction} from "../../redux";
 import css from './MovieInfo.module.css';
+import {GenreBadge} from "../GenreBadge/GenreBadge";
 
 const MovieInfo = () => {
     const {movie} = useSelector(state => state.movies);
@@ -24,8 +25,14 @@ const MovieInfo = () => {
                         <div className={css.border}>
                             <div className={css.center}>
                                 <div className={css.left}>
+                                    <div className={css.genres}>
+                                        {
+                                            movie.genres.map(genre => <GenreBadge key={genre.id} genre={genre}/>)
+                                        }
+                                    </div>
                                     <h2>{movie.title}</h2>
-                                    <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.poster_path} alt=""/>
+                                    <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                                         alt=""/>
                                 </div>
                             </div>
 
@@ -50,12 +57,11 @@ const MovieInfo = () => {
                                     <p><b>Original_language:</b> {movie.original_language}</p>
                                     <p><b>Tagline:</b> {movie.tagline}</p>
                                 </div>
-
-
                             </div>
                             <div className={css.frame}>
                                 <h4>Frame from the movie</h4>
-                                <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.backdrop_path} alt=""/>
+                                <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.backdrop_path}
+                                     alt=""/>
                             </div>
                         </div>
 

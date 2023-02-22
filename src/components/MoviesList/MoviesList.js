@@ -29,9 +29,9 @@ const MoviesList = () => {
 
     return (
         <>
-            <div>
-                <button disabled={!page} onClick={prev}>prev</button>
-                <button disabled={!page} onClick={next}>next</button>
+            <div className={css.buttons}>
+                <button className={css.btn} disabled={!page} onClick={prev}>prev</button>
+                <button className={css.btn} disabled={!page} onClick={next}>next</button>
 
             </div>
 

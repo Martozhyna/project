@@ -5,7 +5,11 @@ import {movieService} from "../../services";
 const initialState = {
     movies: [],
     page: 1,
-    movie: null
+    movie: null,
+    genre: [],
+    searchMovie: [],
+    query: ''
+
 };
 
 const getAll = createAsyncThunk(
@@ -22,7 +26,7 @@ const getAll = createAsyncThunk(
 
 const getDetails = createAsyncThunk(
     'movieSlice/getDetails',
-    async (id,thunkAPI) => {
+    async (id, thunkAPI) => {
         try {
             const {data} = await movieService.getDetailsMovie(id);
             return data
@@ -30,7 +34,23 @@ const getDetails = createAsyncThunk(
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
+);
+
+const searchMovie = createAsyncThunk(
+    'movieSlice/searchMovie',
+    async ({query},thunkAPI) => {
+        try {
+            const {data} = await movieService.searchMovie(query);
+            return data.results
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
 )
+
+
+
+
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -48,13 +68,22 @@ const movieSlice = createSlice({
             .addCase(getDetails.fulfilled,(state,action) => {
                 state.movie = action.payload;
             })
+            .addCase(searchMovie.fulfilled,(state, action) => {
+                state.searchMovie = action.payload;
+                state.query = action.payload
+            })
+
+
 });
 
 const {reducer: movieReducer,actions} = movieSlice;
 
 const movieAction = {
     getAll,
-    getDetails
+    getDetails,
+    searchMovie
+
+
 };
 
 export {

@@ -1,9 +1,12 @@
-const GenreBadge = () => {
-    //оці бабли з жанрами
+import css from './GenreBadge.module.css'
+
+const GenreBadge = ({genre}) => {
+const {name} = genre
+
     return (
-        <div>
-            GenreBadge
+        <div className={css.genre}>
+            {name}
         </div>
-    )
+    );
 }
 export {GenreBadge}

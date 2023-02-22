@@ -6,3 +6,5 @@ export * from './MoviesList/MoviesList';
 export * from './MoviesListCard/MoviesListCard';
 export * from './PosterPreview/PosterPreview';
 export * from './StarsRating/StarsRating';
+export * from './Genre/Genre';
+export * from './Search/Search'

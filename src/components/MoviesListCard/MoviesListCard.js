@@ -1,17 +1,20 @@
 import {Link} from "react-router-dom";
 
 import css from './MoviesListCard.module.css'
+import {Genre} from "../Genre/Genre";
+import {GenreBadge} from "../GenreBadge/GenreBadge";
+
 
 const MoviesListCard = ({movie}) => {
     //наступна сторінка, де відображається вся інформація про фільм
-    const {title,poster_path,id,release_date} = movie
+    const {title,poster_path,id,release_date,genres} = movie
 
     return (
         <div className={css.movieBg}>
             <div className={css.center}>
                 <div className={css.movie}>
                     <h2>{title}</h2>
-                    <h3>{release_date.slice(0,4)}</h3>
+                    <h3>{release_date.slice(0, 4)}</h3>
                     <img src={'https://image.tmdb.org/t/p/w300/' + poster_path} alt={title}/>
                     <div>
 
@@ -22,6 +25,6 @@ const MoviesListCard = ({movie}) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export {MoviesListCard}
