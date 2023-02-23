@@ -7,8 +7,8 @@ const initialState = {
     page: 1,
     movie: null,
     genre: [],
-    searchMovie: [],
-    query: ''
+    searched: [],
+
 
 };
 
@@ -38,9 +38,9 @@ const getDetails = createAsyncThunk(
 
 const searchMovie = createAsyncThunk(
     'movieSlice/searchMovie',
-    async ({query},thunkAPI) => {
+    async ({name},thunkAPI) => {
         try {
-            const {data} = await movieService.searchMovie(query);
+            const {data} = await movieService.searchMovie(name);
             return data.results
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data);
@@ -69,8 +69,8 @@ const movieSlice = createSlice({
                 state.movie = action.payload;
             })
             .addCase(searchMovie.fulfilled,(state, action) => {
-                state.searchMovie = action.payload;
-                state.query = action.payload
+                state.searched = action.payload;
+
             })
 
 

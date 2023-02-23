@@ -1,7 +1,8 @@
 import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
-import {Search} from "../Search/Search";
+import {SearchMovies} from "../SearchMovies/SearchMovies";
+import {HeaderSearch} from "./HeaderSearch/HeaderSearch";
 
 
 
@@ -16,7 +17,7 @@ const Header = () => {
 
             </div>
             <div className={css.search}>
-                <Search/>
+                {/*<HeaderSearch/>*/}
             </div>
             <div className={css.bg}>
                 background

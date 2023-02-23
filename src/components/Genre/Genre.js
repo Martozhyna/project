@@ -1,7 +1,7 @@
 const Genre = ({movie}) => {
     return (
         <div>
-            {movie.name}
+            {movie.title}
         </div>
     )
 }

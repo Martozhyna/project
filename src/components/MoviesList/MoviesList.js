@@ -7,7 +7,7 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './MoviesList.module.css';
 
 
-const MoviesList = () => {
+const MoviesList = ({movie}) => {
     //як компонента юзерс (рендерить всіх юзерів)
     const {movies,page} = useSelector(state => state.movies);
     const dispatch = useDispatch();
@@ -38,9 +38,11 @@ const MoviesList = () => {
             <div className={css.movies}>
 
                 {
-                    movies.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
+                    movies?.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
 
                 }
+
+
 
             </div>
 
