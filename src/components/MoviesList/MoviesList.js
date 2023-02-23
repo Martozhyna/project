@@ -29,6 +29,7 @@ const MoviesList = ({movie}) => {
 
     return (
         <>
+           <div className={css.hr}></div>
             <div className={css.buttons}>
                 <button className={css.btn} disabled={!page} onClick={prev}>prev</button>
                 <button className={css.btn} disabled={!page} onClick={next}>next</button>

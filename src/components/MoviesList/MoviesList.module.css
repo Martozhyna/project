@@ -27,3 +27,10 @@
     color: black;
     border: 2px solid #f5ac34;
 }
+
+.hr{
+    width: 100%;
+    height: 2px;
+    margin: 10px;
+    background: linear-gradient(#f5ac34,#ea5358);
+}

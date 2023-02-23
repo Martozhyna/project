@@ -25,6 +25,7 @@ const MoviesListCard = ({movie}) => {
                 </div>
             </div>
         </div>
+
     );
 }
 export {MoviesListCard}

@@ -8,7 +8,17 @@ body {
 
 }
 
+body::-webkit-scrollbar { width: 0;}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+/* LIGHT THEM*/
+html[data-theme = 'light']{
+  --background-color: white
+}
+
+html[data-theme = 'dark']{
+  --background-color: black
 }
