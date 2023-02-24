@@ -5,11 +5,13 @@ import {useParams} from "react-router-dom";
 import {movieAction} from "../../redux";
 import css from './MovieInfo.module.css';
 import {GenreBadge} from "../GenreBadge/GenreBadge";
+import {useTheme} from "../../hook/useTheme";
 
 const MovieInfo = () => {
     const {movie} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const {id} = useParams();
+    const {theme, setTheme} = useTheme();
 
     useEffect(() =>{
         if (id){

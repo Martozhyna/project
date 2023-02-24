@@ -1,8 +1,8 @@
 .genre{
     margin: 5px;
     font-size: 20px;
-    background: #ec6552;
-    border: 3px solid #eb5659;
+    background: var(--button-background);
+    border: 3px solid var(--button-border-color);
     border-radius: 10px;
     transition-duration: 0.4s;
     cursor: pointer;

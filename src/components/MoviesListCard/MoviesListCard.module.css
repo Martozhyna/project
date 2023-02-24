@@ -1,7 +1,7 @@
 .movieBg{
     width: 20%;
     margin: 10px;
-    background-image: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
+    background-image: var(--border-background-color);
     border-radius: 20px;
     transition: all .3s;
 }
@@ -10,9 +10,10 @@
     width: 100%;
     border-radius:20px;
     transition: all .2s;
-    background: snow;
+    background: var(--card-background-color);
     text-align: center;
     box-sizing: border-box;
+    color: var(--text-color);
 }
 
 .center{
@@ -22,7 +23,7 @@
 }
 
 .movieBg:hover{
-    box-shadow: rgb(236, 189, 164) 0 15px 30px -5px;
+    box-shadow: var(--card-shadow-background);
     transform: translateY(-10px);
 }
 
@@ -36,7 +37,11 @@ margin: 10px;
 }
 
 .link{
-    color: black;
+    color: var(--text-color);
     font-size: 20px;
+}
+
+.link:hover{
+    color: var(--link-color);
 }
 
