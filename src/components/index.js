@@ -7,4 +7,6 @@ export * from './MoviesListCard/MoviesListCard';
 export * from './PosterPreview/PosterPreview';
 export * from './StarsRating/StarsRating';
 export * from './Genre/Genre';
-export * from './SearchMovies/SearchMovies'
+export * from './SearchMovies/SearchMovies';
+export * from './GenresList/GenresList';
+export * from './GenreList/GenreList';

@@ -2,6 +2,8 @@ import {Link} from "react-router-dom";
 
 import css from './Header.module.css'
 import {useTheme} from "../../hook/useTheme";
+import {UserInfo} from "../UserInfo/UserInfo";
+import {GenresList} from "../GenresList/GenresList";
 
 
 
@@ -22,8 +24,11 @@ const Header = () => {
             <div className={css.list}>
                 <Link to={''}>All movie</Link>
             </div>
+            <div>
+                <GenresList/>
+            </div>
             <div className={css.title}>
-                Name of Site
+                <h1>Usual movies site</h1>
             </div>
 
             <div className={css.bg}>
@@ -31,7 +36,7 @@ const Header = () => {
                 <button className={css.btnDark} onClick={darkTheme}>Dark</button>
             </div>
             <div className={css.user}>
-                user
+                <UserInfo/>
             </div>
         </div>
     )

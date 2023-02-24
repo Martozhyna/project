@@ -6,10 +6,12 @@ const initialState = {
     movies: [],
     page: 1,
     movie: null,
-    genre: [],
+    movieGenres: [],
+    moviesByGenre:[],
+    with_genres: null,
     searched: [],
-    query: ''
-
+    query: '',
+    currentGenres: [],
 
 };
 
@@ -37,6 +39,32 @@ const getDetails = createAsyncThunk(
     }
 );
 
+const getGenres = createAsyncThunk(
+    'movieSlice/getGenre',
+    async (_, thunkAPI) => {
+        try {
+            const {data} = await movieService.getGenres();
+            return data.genres;
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+);
+
+const getMovieByGenre = createAsyncThunk(
+    'movieSlice/getMovieByGenre',
+    async ({with_genres},thunkAPI) => {
+        try {
+            const {data} = await movieService.getMovieByGenre(with_genres);
+            return data.results
+        } catch (e) {
+            return thunkAPI.rejectWithValue(e.response.data);
+        }
+    }
+)
+
+
+
 const searchMovie = createAsyncThunk(
     'movieSlice/searchMovie',
     async ({query},thunkAPI) => {
@@ -57,7 +85,14 @@ const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
     reducers: {
-
+        selectGenre: (state, action) => {
+            state.currentGenres.push(action.payload);
+        },
+        deleteGenre: (state, action) => {
+            const index = state.currentGenres.findIndex(genre => genre.id === action.payload);
+            state.currentGenres.splice(index, 1)
+            state.currentGenres.push(action.payload);
+        }
     },
     extraReducers: builder =>
         builder
@@ -74,18 +109,25 @@ const movieSlice = createSlice({
                 state.query = action.payload
 
             })
-
-
+            .addCase(getGenres.fulfilled,(state, action) => {
+                state.movieGenres = action.payload;
+            })
+            .addCase(getMovieByGenre.fulfilled,(state, action) => {
+                state.moviesByGenre = action.payload;
+                state.with_genres = action.payload
+            })
 });
 
-const {reducer: movieReducer,actions} = movieSlice;
+const {reducer: movieReducer,actions:{selectGenre,deleteGenre}} = movieSlice;
 
 const movieAction = {
     getAll,
     getDetails,
-    searchMovie
-
-
+    searchMovie,
+    getGenres,
+    getMovieByGenre,
+    selectGenre,
+    deleteGenre
 };
 
 export {

@@ -51,12 +51,12 @@ const MovieInfo = () => {
                             <div className={css.info}>
                                 <div>
                                     <p><b>Adult:</b> {movie.adult.toString()}</p>
-                                    <p><b>Release_date:</b> {movie.release_date}</p>
-                                    <p><b>Vote_average:</b> {movie.vote_average}</p>
+                                    <p><b>Release date:</b> {movie.release_date}</p>
+                                    <p><b>Movie rating:</b> {movie.vote_average}</p>
                                 </div>
                                 <div>
                                     <p><b>Budget:</b> {movie.budget}</p>
-                                    <p><b>Original_language:</b> {movie.original_language}</p>
+                                    <p><b>Original language:</b> {movie.original_language}</p>
                                     <p><b>Tagline:</b> {movie.tagline}</p>
                                 </div>
                             </div>

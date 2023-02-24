@@ -6,10 +6,6 @@ import {useEffect} from "react";
 import {movieAction} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './Search.Movies.module.css';
-import {findAllByDisplayValue} from "@testing-library/react";
-
-
-
 
 const SearchMovies = () => {
     const {searched,query} = useSelector(state => state.movies);
