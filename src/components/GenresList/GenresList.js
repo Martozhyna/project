@@ -21,9 +21,9 @@ const GenresList = () => {
 
 
 
-     const handleSubmit  = async(id) => {
+     const handleSubmit  = (id) => {
 
-        if (currentGenres?.includes(id)) {
+        if (currentGenres.id) {
 
             dispatch(movieAction.deleteGenre(id))
             // setQuery();
@@ -31,7 +31,7 @@ const GenresList = () => {
 
         } else {
             // setQuery((value => ({with_genres: +value.get('with_genres') + id})))
-          await  dispatch(movieAction.selectGenre(id));
+           dispatch(movieAction.selectGenre(id));
             setQuery((value => ({with_genres:  id})))
 
 
@@ -42,11 +42,15 @@ const GenresList = () => {
         <div>
             {
                 movieGenres.map(genre => <div key={genre.id}>
-                   <button onClick={() => handleSubmit(genre.id)}>{genre.name}</button>
+                    <button onClick={() => handleSubmit(genre.id)}>{genre.name}</button>
 
                 </div>)
 
             }
+            {
+                query?moviesByGenre.map(value => value.title):<div>nnjn</div>
+            }
+
             {/*{*/}
             {/*    moviesByGenre?.map(value => value.title)*/}
             {/*}*/}
@@ -54,6 +58,6 @@ const GenresList = () => {
 
             }
         </div>
-    )
+    );
 }
 export {GenresList}
