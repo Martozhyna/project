@@ -9,4 +9,3 @@ export * from './StarsRating/StarsRating';
 export * from './Genre/Genre';
 export * from './SearchMovies/SearchMovies';
 export * from './GenresList/GenresList';
-export * from './GenreList/GenreList';

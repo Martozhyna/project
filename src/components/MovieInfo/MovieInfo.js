@@ -5,7 +5,8 @@ import {useParams} from "react-router-dom";
 import {movieAction} from "../../redux";
 import css from './MovieInfo.module.css';
 import {GenreBadge} from "../GenreBadge/GenreBadge";
-import {useTheme} from "../../hook/useTheme";
+import {useTheme} from "../../hook";
+import {posterInfo} from "../PosterPreview/PosterPreview";
 
 const MovieInfo = () => {
     const {movie} = useSelector(state => state.movies);
@@ -13,11 +14,11 @@ const MovieInfo = () => {
     const {id} = useParams();
     const {theme, setTheme} = useTheme();
 
-    useEffect(() =>{
-        if (id){
+    useEffect(() => {
+        if (id) {
             dispatch(movieAction.getDetails(id))
         }
-    },[dispatch,id])
+    }, [dispatch, id]);
 
     return (
         <div>
@@ -33,7 +34,7 @@ const MovieInfo = () => {
                                         }
                                     </div>
                                     <h2>{movie.title}</h2>
-                                    <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.poster_path}
+                                    <img className={css.img} src={posterInfo + movie.poster_path}
                                          alt=""/>
                                 </div>
                             </div>
@@ -72,5 +73,5 @@ const MovieInfo = () => {
             }
         </div>
     );
-}
-export {MovieInfo}
+};
+export {MovieInfo};

@@ -5,19 +5,19 @@ import {useEffect} from "react";
 
 import {movieAction} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
-import css from './Search.Movies.module.css';
+import css from './SearchMovies.module.css';
 
 const SearchMovies = () => {
-    const {searched,query} = useSelector(state => state.movies);
-    const [params, setParams] = useSearchParams({query:''});
+    const {searched, query} = useSelector(state => state.movies);
+    const [params, setParams] = useSearchParams({query: ''});
     const dispatch = useDispatch();
     const {register} = useForm();
 
-useEffect(() => {
-    if (params) {
-        dispatch(movieAction.searchMovie({query:params.get('query')}))
-    }
-},[dispatch,params])
+    useEffect(() => {
+        if (params) {
+            dispatch(movieAction.searchMovie({query: params.get('query')}))
+        }
+    }, [dispatch, params]);
 
 
     const showMovie = (e) => {
@@ -51,10 +51,9 @@ useEffect(() => {
                     // onChange={handleChange}
                        onChange={(e) => setParams(e.target.value)}
                 />
-                <button  className={css.btn} onClick={showMovie}>search</button>
+                <button className={css.btn} onClick={showMovie}>search</button>
 
             </form>
-
 
 
             <div className={css.movies}>
@@ -66,11 +65,10 @@ useEffect(() => {
                 }
 
 
-
             </div>
 
         </div>
 
     );
-}
-export {SearchMovies}
+};
+export {SearchMovies};

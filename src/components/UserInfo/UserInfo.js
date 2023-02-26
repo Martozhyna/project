@@ -13,6 +13,6 @@ const UserInfo = () => {
                 <h4>Welcome back, mr. Giraffe</h4>
             </div>
         </div>
-    )
-}
-export {UserInfo}
+    );
+};
+export {UserInfo};

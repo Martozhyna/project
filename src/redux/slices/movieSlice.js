@@ -7,12 +7,11 @@ const initialState = {
     page: 1,
     movie: null,
     movieGenres: [],
-    moviesByGenre:[],
     with_genres: null,
+    currentGenres: [],
     searched: [],
     query: '',
-    currentGenres: [],
-
+    loading: true
 };
 
 const getAll = createAsyncThunk(
@@ -53,21 +52,20 @@ const getGenres = createAsyncThunk(
 
 const getMovieByGenre = createAsyncThunk(
     'movieSlice/getMovieByGenre',
-    async ({with_genres},thunkAPI) => {
+    async ({with_genres, currentGenres}, thunkAPI) => {
         try {
-            const {data} = await movieService.getMovieByGenre(with_genres);
+            const {data} = await movieService.getMovieByGenre(with_genres, currentGenres);
             return data.results
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
-)
-
+);
 
 
 const searchMovie = createAsyncThunk(
     'movieSlice/searchMovie',
-    async ({query},thunkAPI) => {
+    async ({query}, thunkAPI) => {
         try {
             const {data} = await movieService.searchMovie(query);
             return data.results
@@ -75,11 +73,7 @@ const searchMovie = createAsyncThunk(
             return thunkAPI.rejectWithValue(e.response.data);
         }
     }
-)
-
-
-
-
+);
 
 const movieSlice = createSlice({
     name: 'movieSlice',
@@ -89,8 +83,7 @@ const movieSlice = createSlice({
             state.currentGenres.push(action.payload);
         },
         deleteGenre: (state, action) => {
-            const index = state.currentGenres.findIndex(genre => genre.id === action.payload);
-            state.currentGenres.splice(index, 1)
+            state.currentGenres.shift()
             state.currentGenres.push(action.payload);
         }
     },
@@ -99,22 +92,50 @@ const movieSlice = createSlice({
             .addCase(getAll.fulfilled, (state, action) => {
                 state.movies = action.payload;
                 state.page = action.payload;
+                state.loading = false;
 
             })
-            .addCase(getDetails.fulfilled,(state,action) => {
-                state.movie = action.payload;
+            .addCase(getAll.pending, (state, action) => {
+                state.loading = true;
+
             })
-            .addCase(searchMovie.fulfilled,(state, action) => {
+            .addCase(getDetails.fulfilled, (state, action) => {
+                state.movie = action.payload;
+                state.loading = false;
+            })
+            .addCase(getDetails.pending, (state, action) => {
+                state.loading = true;
+            })
+            .addCase(searchMovie.fulfilled, (state, action) => {
                 state.searched = action.payload;
                 state.query = action.payload
+                state.loading = false;
 
             })
-            .addCase(getGenres.fulfilled,(state, action) => {
-                state.movieGenres = action.payload;
+            .addCase(searchMovie.pending, (state, action) => {
+                state.loading = true;
+
             })
-            .addCase(getMovieByGenre.fulfilled,(state, action) => {
-                state.moviesByGenre = action.payload;
-                state.with_genres = action.payload
+            .addCase(getGenres.fulfilled, (state, action) => {
+                state.movieGenres = action.payload;
+                state.loading = false;
+
+
+            })
+            .addCase(getGenres.pending, (state, action) => {
+                state.loading = true;
+
+
+            })
+            .addCase(getMovieByGenre.fulfilled, (state, action) => {
+                state.movies = action.payload;
+                state.with_genres = action.payload;
+                state.loading = false;
+
+
+            })
+            .addCase(getMovieByGenre.rejected, (state, action) => {
+                state.loading = true;
             })
 });
 

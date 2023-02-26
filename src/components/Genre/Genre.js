@@ -3,6 +3,6 @@ const Genre = ({movie}) => {
         <div>
             {movie.title}
         </div>
-    )
-}
-export {Genre}
+    );
+};
+export {Genre};

@@ -14,10 +14,7 @@ apiService.interceptors.request.use((config) => {
     return config;
 });
 
-
-
 export {
     apiService,
-
 };
 

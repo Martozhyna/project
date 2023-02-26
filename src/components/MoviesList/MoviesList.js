@@ -9,14 +9,14 @@ import css from './MoviesList.module.css';
 
 const MoviesList = ({movie}) => {
     //як компонента юзерс (рендерить всіх юзерів)
-    const {movies,page} = useSelector(state => state.movies);
+    const {movies, page, loading} = useSelector(state => state.movies);
     const dispatch = useDispatch();
-    const [query, setQuery] = useSearchParams({page:'1'});
+    const [query, setQuery] = useSearchParams({page: '1'});
 
 
     useEffect(() => {
-        dispatch(movieAction.getAll({page:query.get('page')}))
-    }, [dispatch,query]);
+        dispatch(movieAction.getAll({page: query.get('page')}))
+    }, [dispatch, query]);
 
 
     const prev = () => {
@@ -29,7 +29,10 @@ const MoviesList = ({movie}) => {
 
     return (
         <>
-           <div className={css.hr}></div>
+            {
+                loading && <h1>LOADING..........</h1>
+            }
+            <div className={css.hr}></div>
             <div className={css.buttons}>
                 <button className={css.btn} disabled={!page} onClick={prev}>prev</button>
                 <button className={css.btn} disabled={!page} onClick={next}>next</button>
@@ -43,12 +46,8 @@ const MoviesList = ({movie}) => {
 
                 }
 
-
-
             </div>
-
-
         </>
     );
-}
-export {MoviesList}
+};
+export {MoviesList};

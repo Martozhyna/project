@@ -62,8 +62,6 @@ a:hover{
     height: 80px;
     cursor: pointer;
    font-size: 25px;
-
-
 }
 
 .btnLight:active{
@@ -71,10 +69,6 @@ a:hover{
     0 0 25px rgb(236, 189, 164),
     0 0 50px rgb(236, 189, 164),
     0 0 100px rgb(236, 189, 164);
-
-
-
-
 }
 
 .btnDark:hover{
@@ -82,7 +76,6 @@ a:hover{
     height: 80px;
     cursor: pointer;
     font-size: 25px;
-
 }
 
 .btnDark:active{
@@ -90,10 +83,10 @@ a:hover{
     0 0 25px rgb(1, 176, 227, 0.67),
     0 0 50px rgb(1, 176, 227, 0.67),
     0 0 100px rgb(1, 176, 227, 0.67);
+}
 
-
-
-
+.genreList{
+    width: 40%;
 }
 
 .user{

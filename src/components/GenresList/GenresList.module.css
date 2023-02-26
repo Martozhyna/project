@@ -1,0 +1,28 @@
+.genres{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.genre{
+    width: 20%;
+    margin: 10px;
+}
+
+.btn{
+    font-size: 150%;
+    margin: 5px;
+    background: var(--button-background);
+    border: 3px solid var(--button-border-color);
+    border-radius: 10px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.btn:hover{
+    background: var(--button-hover-background);
+    color: var(--text-color);
+    border: 2px solid var(--button-hover-border-color);
+}

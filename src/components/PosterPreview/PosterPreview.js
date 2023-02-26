@@ -1,9 +1,7 @@
-const PosterPreview = () => {
-    //тут живе карточка, яка відображає постер фільму в так званих юзерсах
-    return (
-        <div>
-            PosterPreview
-        </div>
-    )
-}
-export {PosterPreview}
+const posterPreview = 'https://image.tmdb.org/t/p/w300/';
+const posterInfo = 'https://image.tmdb.org/t/p/w500';
+
+export {
+    posterPreview,
+    posterInfo
+};

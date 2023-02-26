@@ -1,14 +1,16 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {movieAction} from "../../redux";
-import {GenreList} from "../GenreList/GenreList";
 import {useSearchParams} from "react-router-dom";
+
+import {movieAction} from "../../redux";
+import css from './GenresList.module.css';
+
 
 const GenresList = () => {
 
-    const {movieGenres,moviesByGenre,with_genres,currentGenres} = useSelector(state => state.movies);
+    const {movieGenres, with_genres, currentGenres} = useSelector(state => state.movies);
     const dispatch = useDispatch();
-    const [query, setQuery] = useSearchParams({with_genres:null});
+    const [query, setQuery] = useSearchParams({with_genres: null});
 
     useEffect(() => {
         dispatch(movieAction.getGenres());
@@ -16,48 +18,32 @@ const GenresList = () => {
 
     useEffect(() => {
         if (query)
-        dispatch(movieAction.getMovieByGenre({with_genres:query.get('with_genres')}))
-    }, [dispatch,query]);
+            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres}))
+    }, [dispatch, query, currentGenres]);
 
+    const handleSubmit = (id) => {
 
-
-     const handleSubmit  = (id) => {
-
-        if (currentGenres.id) {
-
+        if (currentGenres.length) {
+            setQuery((value => ({with_genres: +value.get('with_genres')})))
             dispatch(movieAction.deleteGenre(id))
-            // setQuery();
-            // setQuery(e.target.value);
-
+            setQuery((value => ({with_genres: id})));
         } else {
-            // setQuery((value => ({with_genres: +value.get('with_genres') + id})))
-           dispatch(movieAction.selectGenre(id));
-            setQuery((value => ({with_genres:  id})))
-
-
+            setQuery((value => ({with_genres: +value.get('with_genres')})))
+            dispatch(movieAction.selectGenre(id));
+            setQuery((value => ({with_genres: id})))
         }
-    }
+
+    };
 
     return (
-        <div>
+        <div className={css.genres}>
             {
-                movieGenres.map(genre => <div key={genre.id}>
-                    <button onClick={() => handleSubmit(genre.id)}>{genre.name}</button>
-
+                movieGenres.map(genre => <div className={css.genre} key={genre.id}>
+                    <button className={css.btn} onClick={() => handleSubmit(genre.id)}>{genre.name}</button>
                 </div>)
-
-            }
-            {
-                query?moviesByGenre.map(value => value.title):<div>nnjn</div>
-            }
-
-            {/*{*/}
-            {/*    moviesByGenre?.map(value => value.title)*/}
-            {/*}*/}
-            {
 
             }
         </div>
     );
-}
-export {GenresList}
+};
+export {GenresList};

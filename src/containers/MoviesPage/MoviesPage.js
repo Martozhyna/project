@@ -8,6 +8,6 @@ const MoviesPage = () => {
             <SearchMovies/>
             <MoviesList/>
         </div>
-    )
-}
-export {MoviesPage}
+    );
+};
+export {MoviesPage};

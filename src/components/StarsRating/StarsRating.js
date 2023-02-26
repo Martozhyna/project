@@ -14,6 +14,6 @@ const StarsRating = ({rating}) => {
             />
 
         </div>
-    )
-}
-export {StarsRating}
+    );
+};
+export {StarsRating};

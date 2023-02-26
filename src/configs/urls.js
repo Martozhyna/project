@@ -5,6 +5,7 @@ const urls = {
     movie: `/discover/movie`,
     detailMovie: '/movie',
     genre: '/genre/movie/list',
+    genreSearch: '/discover/movie',
     searchMovie: '/search/movie'
 };
 
