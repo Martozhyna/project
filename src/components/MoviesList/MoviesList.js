@@ -19,10 +19,8 @@ const MoviesList = ({movie}) => {
 
         }
         else {
-            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres,page: query.get('page')}))
+            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres}))
         }
-
-
 
     }, [dispatch, query,currentGenres,setQuery]);
 
