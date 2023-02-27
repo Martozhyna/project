@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 
 import './App.css';
-import {MoviesPage} from "./containers";
+import {MoviesPage, NotFoundPage} from "./containers";
 import {MovieInfo} from "./components";
 import './App.css'
 
@@ -12,6 +12,7 @@ function App() {
             <Routes>
                 <Route path={'/'} element={<MoviesPage/>}/>
                 <Route path={'/movie/:id'} element={<MovieInfo/>}/>
+                <Route path={'*'} element={<NotFoundPage/>}/>
             </Routes>
         </div>
 

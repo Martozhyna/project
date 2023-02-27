@@ -12,7 +12,7 @@ const MovieInfo = () => {
     const {movie} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const {id} = useParams();
-    const {theme, setTheme} = useTheme();
+    useTheme();
 
     useEffect(() => {
         if (id) {

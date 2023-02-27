@@ -36,18 +36,15 @@ const SearchMovies = () => {
             <form className={css.form}>
                 <input className={css.search} type="text" placeholder={'Search movie...'}
                        {...register('query')}
-                    // onChange={handleChange}
                        onChange={(e) => setParams(e.target.value)}
                 />
                 <button className={css.btn} onClick={showMovie}>search</button>
-
             </form>
 
 
             <div className={css.movies}>
                 {
                     searched.map(movie => <MoviesListCard key={movie.id} movie={movie}/>)
-
                 }
             </div>
 
