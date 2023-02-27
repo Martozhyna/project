@@ -8,7 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {movieAction} from "../../redux";
 
 const Header = () => {
-    const {theme, setTheme} = useTheme();
+    const {setTheme} = useTheme();
     const {currentGenres} = useSelector(state => state.movies);
     const dispatch = useDispatch();
 

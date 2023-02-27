@@ -8,7 +8,7 @@ import css from './GenresList.module.css';
 
 const GenresList = () => {
 
-    const {movieGenres, with_genres, currentGenres} = useSelector(state => state.movies);
+    const {movieGenres, currentGenres} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({with_genres: null});
     const [page, setPage] = useSearchParams({page: '1'});

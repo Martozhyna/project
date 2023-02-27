@@ -7,8 +7,8 @@ import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './MoviesList.module.css';
 
 
-const MoviesList = ({movie}) => {
-    const {movies, currentGenres ,  page} = useSelector(state => state.movies);
+const MoviesList = () => {
+    const {movies, currentGenres} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({page: '1'});
 
