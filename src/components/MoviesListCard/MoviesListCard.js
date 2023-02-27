@@ -15,16 +15,20 @@ const MoviesListCard = ({movie}) => {
                     <h2>{title}</h2>
                     <h3>{release_date.slice(0, 4)}</h3>
                     <img src={posterPreview + poster_path} alt={title}/>
+
                     <div>
                         <StarsRating rating={vote_average}/>
                     </div>
+
                     <div className={css.linkDiv}>
                         <Link to={`/movie/${id}`} className={css.link}>Learn more</Link>
                     </div>
+
                 </div>
             </div>
         </div>
 
     );
 };
+
 export {MoviesListCard};

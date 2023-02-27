@@ -4,7 +4,5 @@
     background: var(--button-background);
     border: 3px solid var(--button-border-color);
     border-radius: 10px;
-    transition-duration: 0.4s;
-    cursor: pointer;
     color: snow;
 }

@@ -11,6 +11,7 @@ const GenresList = () => {
     const {movieGenres, with_genres, currentGenres} = useSelector(state => state.movies);
     const dispatch = useDispatch();
     const [query, setQuery] = useSearchParams({with_genres: null});
+    const [page, setPage] = useSearchParams({page: '1'});
 
     useEffect(() => {
         dispatch(movieAction.getGenres());
@@ -18,17 +19,19 @@ const GenresList = () => {
 
     useEffect(() => {
         if (query)
-            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres}))
-    }, [dispatch, query, currentGenres]);
+            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres,page:page.get('page')}))
+    }, [dispatch, query, currentGenres,page]);
 
     const handleSubmit = (id) => {
 
         if (currentGenres.length) {
             setQuery((value => ({with_genres: +value.get('with_genres')})))
-            dispatch(movieAction.deleteGenre(id))
+            setPage((value => ({page: value.get('page')})))
+            dispatch(movieAction.updateGenre(id))
             setQuery((value => ({with_genres: id})));
         } else {
             setQuery((value => ({with_genres: +value.get('with_genres')})))
+            setPage((value => ({page: value.get('page')})))
             dispatch(movieAction.selectGenre(id));
             setQuery((value => ({with_genres: id})))
         }

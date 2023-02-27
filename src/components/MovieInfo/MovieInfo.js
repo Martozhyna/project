@@ -6,7 +6,7 @@ import {movieAction} from "../../redux";
 import css from './MovieInfo.module.css';
 import {GenreBadge} from "../GenreBadge/GenreBadge";
 import {useTheme} from "../../hook";
-import {posterInfo} from "../PosterPreview/PosterPreview";
+import {posterInfo, posterPreview} from "../PosterPreview/PosterPreview";
 
 const MovieInfo = () => {
     const {movie} = useSelector(state => state.movies);
@@ -35,7 +35,7 @@ const MovieInfo = () => {
                                     </div>
                                     <h2>{movie.title}</h2>
                                     <img className={css.img} src={posterInfo + movie.poster_path}
-                                         alt=""/>
+                                         alt={movie.title}/>
                                 </div>
                             </div>
 
@@ -63,8 +63,8 @@ const MovieInfo = () => {
                             </div>
                             <div className={css.frame}>
                                 <h4>Frame from the movie</h4>
-                                <img className={css.img} src={'https://image.tmdb.org/t/p/w500' + movie.backdrop_path}
-                                     alt=""/>
+                                <img className={css.img} src={posterPreview + movie.backdrop_path}
+                                     alt={movie.title}/>
                             </div>
                         </div>
 

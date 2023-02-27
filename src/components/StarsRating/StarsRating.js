@@ -12,8 +12,8 @@ const StarsRating = ({rating}) => {
                 starDimension="35px"
                 starSpacing="6px"
             />
-
         </div>
     );
 };
+
 export {StarsRating};

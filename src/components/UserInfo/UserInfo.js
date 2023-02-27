@@ -1,7 +1,6 @@
 import userAvatar from './img/userAvatar.png';
 import css from './UserInfo.module.css';
 
-
 const UserInfo = () => {
     //інформація написана вручну про юзера
     return (
@@ -15,4 +14,5 @@ const UserInfo = () => {
         </div>
     );
 };
+
 export {UserInfo};
