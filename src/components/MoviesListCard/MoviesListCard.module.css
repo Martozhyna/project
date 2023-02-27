@@ -45,3 +45,17 @@ margin: 10px;
     color: var(--link-color);
 }
 
+.genres{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.genre{
+    width: 30%;
+    margin: 5px;
+    background: var(--button-background);
+    border: 3px solid var(--button-border-color);
+    border-radius: 10px;
+    color: snow;
+}

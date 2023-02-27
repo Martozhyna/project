@@ -3,13 +3,21 @@ import {Link} from "react-router-dom";
 import css from './MoviesListCard.module.css'
 import {StarsRating} from "../StarsRating/StarsRating";
 import {posterPreview} from "../PosterPreview/PosterPreview";
+import {useSelector} from "react-redux";
+
 
 const MoviesListCard = ({movie}) => {
-    //наступна сторінка, де відображається вся інформація про фільм
-    const {title, poster_path, id, release_date, genres, vote_average} = movie;
+    const {title, poster_path, id, release_date, vote_average} = movie;
+    const {movieGenres} = useSelector(state => state.movies);
+
+    const genres = (id) => {
+        const genre = movieGenres.find(genre => genre.id === id);
+        return genre.name
+    }
 
     return (
         <div className={css.movieBg}>
+
             <div className={css.center}>
                 <div className={css.movie}>
                     <h2>{title}</h2>
@@ -18,6 +26,12 @@ const MoviesListCard = ({movie}) => {
 
                     <div>
                         <StarsRating rating={vote_average}/>
+
+                    </div>
+                    <div className={css.genres}>
+                        {
+                            movie.genre_ids.map(genre => <div className={css.genre} key={genre}>{genres(genre)}</div>)
+                        }
                     </div>
 
                     <div className={css.linkDiv}>
@@ -26,7 +40,9 @@ const MoviesListCard = ({movie}) => {
 
                 </div>
             </div>
+
         </div>
+
 
     );
 };
