@@ -18,9 +18,13 @@ const GenresList = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        if (query)
-            dispatch(movieAction.getMovieByGenre({with_genres: query.get('with_genres'), currentGenres,page:page.get('page')}))
-    }, [dispatch, query, currentGenres,page]);
+        if (query.has('with_genres').length)
+        dispatch(movieAction.getMovieByGenre({
+            with_genres: query.get('with_genres'),
+            currentGenres,
+            page: page.get('page')
+        }))
+    }, [dispatch, query, currentGenres, page]);
 
     const handleSubmit = (id) => {
 

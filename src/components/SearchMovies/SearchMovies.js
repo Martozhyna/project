@@ -7,40 +7,56 @@ import {movieAction} from "../../redux";
 import {MoviesListCard} from "../MoviesListCard/MoviesListCard";
 import css from './SearchMovies.module.css';
 
+
 const SearchMovies = () => {
-    const {searched, query} = useSelector(state => state.movies);
+    const {searched} = useSelector(state => state.movies);
     const [params, setParams] = useSearchParams({query: ''});
     const dispatch = useDispatch();
-    const {register} = useForm();
+    const {register, handleSubmit, reset} = useForm();
+    const [query, setQuery] = useSearchParams({page: '1'});
+
+
 
     useEffect(() => {
-        if (params) {
-            dispatch(movieAction.searchMovie({query: params.get('query')}))
+        if (params.has('query').lenght) {
+            dispatch(movieAction.searchMovie({query: params.get('query'),page: query.get('page') }))
         }
-    }, [dispatch, params]);
+    }, [dispatch, params, query]);
 
 
-    const showMovie = (e) => {
+    const showMovie = async (e) => {
 
-        if (query) {
+        if (params.has('query')) {
             setParams((value => ({query: +value.get('query')})));
-            dispatch(movieAction.searchMovie(e))
-            setParams(e.target.value);
+            await dispatch(movieAction.searchMovie(e))
+            setParams(e)
+
+
         }
-        setParams('');
+        // setParams('');
     };
+
+    const prev = () => {
+        setQuery((value => ({page: +value.get('page') - 1})));
+    };
+
+    const next = () => {
+        setQuery(value => ({page: +value.get('page') + 1}))
+    };
+
 
     return (
         <div>
 
-            <form className={css.form}>
+            <form className={css.form} onSubmit={handleSubmit(showMovie)}>
                 <input className={css.search} type="text" placeholder={'Search movie...'}
                        {...register('query')}
-                       onChange={(e) => setParams(e.target.value)}
                 />
-                <button className={css.btn} onClick={showMovie}>search</button>
-            </form>
+                <button className={css.btn}>search</button>
 
+            </form>
+            <button className={css.btn} disabled={+query.get('page') < 2} onClick={prev}>prev</button>
+            <button className={css.btn} onClick={next}>next</button>
 
             <div className={css.movies}>
                 {

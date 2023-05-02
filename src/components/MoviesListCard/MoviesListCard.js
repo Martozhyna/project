@@ -21,7 +21,7 @@ const MoviesListCard = ({movie}) => {
             <div className={css.center}>
                 <div className={css.movie}>
                     <h2>{title}</h2>
-                    <h3>{release_date.slice(0, 4)}</h3>
+                    <h3>{release_date}</h3>
                     <img src={posterPreview + poster_path} alt={title}/>
 
                     <div>
